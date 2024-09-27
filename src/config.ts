@@ -5,7 +5,7 @@ dotenv.config();
 
 // Header for the request
 const reqHeaders = {
-    'User-Agent': 'e6Reposter/1.0 (by undelete on e621)', // MyProject/1.0 (by username on e621)
+    'User-Agent': '', // MyProject/1.0 (by username on e621)
     'Content-Type': 'application/json',
 };
 
@@ -14,32 +14,19 @@ const siteUrl: string = 'https://e621.net';
 
 // Will not include posts with these tags
 const blacklist: string[] = [
-    'guro',
-    'death',
-    'necrophilia',
-    'human',
-    'feral',
-    'female',
-    'breasts',
-    'smegma',
-    'comic',
+    
 ];
 
 // Will only include posts with these tags
 const whitelist: string[] = [
-    '*_muscles',
+    
 ];
 
 // These tags may or may not be present in the post
 // Use these to increase the variety of posts
 // Wildcards DO NOT work
 const fuzzyTags: string[] = [
-    'hyper',
-    'macro',
-    'big_muscles',
-    'huge_muscles',
-    'muscular_male',
-    'muscle_growth',
+    
 ];
 
 // Interval
