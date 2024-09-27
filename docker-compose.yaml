@@ -2,7 +2,7 @@ version: '3.8'
 
 # Generic
 services:
-  node-app:
+  e926reposter:
     build: .
     environment:
       - NODE_ENV=production  # Set environment variables if needed
