@@ -16,7 +16,7 @@ class Post {
     // Format in: https://e621.net/wiki_pages/2425
     constructor(data: any) {
         this.id = data.id;
-        this.artists = data.tags.artist.includes("_(artist)") ? data.tags.artist.map((artist: string) => artist.replace("_(artist)", "")) : data.tags.artist;
+        this.artists = data.tags.artist;
         this.score = data.score.total;
         this.favs = data.fav_count;
         this.url = data.tags.meta.includes("webm") ? data.file.url : data.sample.url;

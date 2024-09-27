@@ -13,19 +13,19 @@ const siteUrl: string = 'https://e926.net';
 
 // Will not include posts with these tags
 const blacklist: string[] = [
-    
+
 ];
 
 // Will only include posts with these tags
 const whitelist: string[] = [
-    
+
 ];
 
 // These tags may or may not be present in the post
 // Use these to increase the variety of posts
 // Wildcards DO NOT work
 const fuzzyTags: string[] = [
-    
+
 ];
 
 // Interval

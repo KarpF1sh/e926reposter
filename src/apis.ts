@@ -40,9 +40,10 @@ async function sendPostToChannel(post: Post, bot: TelegramBot){
     // Send the post to the channel
     const ratingEmoji = post.rating === 's' ? '🟢' : post.rating === 'q' ? '🟡' : '🔴';
 
+    // Make this a bit more readable and expandable
     const captionParts = [
         `[ ](${post.url})`,
-        `👨‍🎨 ${post.artists.map(artist => `[${artist}](${siteUrl}/posts?tags=${artist})`).join(', ')}`,
+        `👨‍🎨 ${post.artists.map(artist => `[${artist.replace('_(artist)', '')}](${siteUrl}/posts?tags=${artist.replace(')', '%29').replace('(', '%28')})`).join(', ')}`,
         `🌐 [Link](${siteUrl}/posts/${post.id}) ${post.animated ? 'Animation!' : ''}`,
         `⭐ ${post.score}`,
         `❤️ ${post.favs}`,
