@@ -9,8 +9,7 @@ const reqHeaders = {
     'Content-Type': 'application/json',
 };
 
-const siteUrl: string = 'https://e621.net';
-//const siteUrl = 'https://e926.net'; // For SFW content
+const siteUrl: string = 'https://e926.net';
 
 // Will not include posts with these tags
 const blacklist: string[] = [
