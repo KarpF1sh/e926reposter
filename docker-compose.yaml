@@ -6,6 +6,4 @@ services:
     build: .
     environment:
       - NODE_ENV=production  # Set environment variables if needed
-    volumes:
-      - .:/usr/src/app  # Mount current directory to /usr/src/app in the container
     restart: unless-stopped  # Restart policy
