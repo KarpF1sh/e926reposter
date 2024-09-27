@@ -43,7 +43,7 @@ async function sendPostToChannel(post: Post, bot: TelegramBot){
     const captionParts = [
         `[ ](${post.url})`,
         `👨‍🎨 ${post.artists.map(artist => `[${artist}](${siteUrl}/posts?tags=${artist})`).join(', ')}`,
-        `🌐 [e621](${siteUrl}/posts/${post.id}) ${post.animated ? 'Animation!' : ''}`,
+        `🌐 [Link](${siteUrl}/posts/${post.id}) ${post.animated ? 'Animation!' : ''}`,
         `⭐ ${post.score}`,
         `❤️ ${post.favs}`,
         `${ratingEmoji} ${post.rating}`
