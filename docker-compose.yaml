@@ -1,0 +1,13 @@
+version: '3.8'
+
+# Generic
+services:
+  node-app:
+    build: .
+    ports:
+      - "3000:3000"  # Map the host port to the container port
+    environment:
+      - NODE_ENV=production  # Set environment variables if needed
+    volumes:
+      - .:/usr/src/app  # Mount current directory to /usr/src/app in the container
+    restart: unless-stopped  # Restart policy
