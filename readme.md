@@ -93,8 +93,6 @@ This is very rough MVP done in one evening! Things might (and should) change in 
     docker-compose build
     ```
 
-2. The container should be running on https://localhost:3000
-
 #### Stopping
 
 ```sh
