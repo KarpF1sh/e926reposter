@@ -20,7 +20,7 @@ This is very rough MVP done in one evening! Things might (and should) change in 
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/e621_fav_bot.git
+    git clone https://github.com/KarpF1sh/e926reposte.git
     ```
 2. Navigate to the project directory:
     ```sh
