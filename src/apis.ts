@@ -37,14 +37,15 @@ async function getTagRandom(tags: string[], blacklist: string[], fuzzyTags: stri
 
 // Function to send a post to a Telegram channel
 async function sendPostToChannel(post: Post, bot: TelegramBot){
+
     // Send the post to the channel
     const ratingEmoji = post.rating === 's' ? '🟢' : post.rating === 'q' ? '🟡' : '🔴';
 
     // Make this a bit more readable and expandable
     const captionParts = [
-        `[ ](${post.url})`,
+        //`[ ](${post.url})`,
         `👨‍🎨 ${post.artists.map(artist => `[${artist.replace('_(artist)', '')}](${siteUrl}/posts?tags=${artist.replace(')', '%29').replace('(', '%28')})`).join(', ')}`,
-        `🌐 [Link](${siteUrl}/posts/${post.id}) ${post.animated ? 'Animation!' : ''}`,
+        `🌐 [Link](${siteUrl}/posts/${post.id}) ${post.animated ? 'Animated!' : ''}`,
         `⭐ ${post.score}`,
         `❤️ ${post.favs}`,
         `${ratingEmoji} ${post.rating}`
@@ -56,7 +57,7 @@ async function sendPostToChannel(post: Post, bot: TelegramBot){
     }
 
     if (post.children && post.children.length > 0) {
-        const childrenLinks = post.children.map(childId => `[Child](${siteUrl}/posts/${childId})`).join(', ');
+        const childrenLinks = post.children.map(childId => `[Link](${siteUrl}/posts/${childId})`).join(', ');
         captionParts.push(`Children: ${childrenLinks}`);
     }
 
@@ -69,15 +70,26 @@ async function sendPostToChannel(post: Post, bot: TelegramBot){
 
     //console.log(caption);
 
-    // Send the post to the channel
-    /*
-    await bot.sendPhoto(channelId, post.url, {
-        caption: caption,
-        parse_mode: 'Markdown'
-    });*/
+    // Send the post to the channel if it's less than 50 MB
+    //console.log(post.sizeMb);
 
-    // If the post is animated, send it as a video
-    await bot.sendMessage(channelId, caption, {parse_mode: 'Markdown'});
+    // If the post is a small gif and not a webm, send it as a video
+    // TODO: Telegram won't embed webms, so we should convert them to mp4
+    if (post.animated && !post.webm && post.sizeMb < 50) {
+        console.log('Sending video...');
+        await bot.sendVideo(channelId, post.url, {
+            caption: caption,
+            parse_mode: 'Markdown'
+        });
+    } else {
+        console.log('Sending photo...');
+        await bot.sendPhoto(channelId, post.sampleUrl, {
+            caption: caption,
+            parse_mode: 'Markdown'
+        });
+    }
+
+    //await bot.sendMessage(channelId, caption, {parse_mode: 'Markdown'});
 }
 
 export { getTagRandom, sendPostToChannel };
